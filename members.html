@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+
+    <meta charset="utf-8">
+    <title>Фан сайт группы Scorpion</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="skeleton.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+		#info {
+			background-color : #000000;
+			color : red;
+		}
+		#info > h2 {
+			color : #ffffff;
+		}
+		#infoDiv {
+			display : none;
+			position : absolute;
+			width : 80px;
+			color : #ffffff;
+			background-color : red;
+		}
+		#members-images {
+			text-align : center;
+		}
+    </style>
+	<script>
+		var membersInfo = {
+			1 : 'Клаус Майне — немецкий рок-певец, гитарист и поэт-песенник, вокалист группы Scorpions. Вместе с Рудольфом Шенкером Клаус является автором большинства песен группы, в том числе наиболее успешной песни группы — Wind of Change.',
+			2 : 'Рудольф Генрих Шенкер — немецкий музыкант, основатель группы Scorpions, её гитарист и композитор. Старший брат Михаэля Шенкера, участника группы в раннем периоде её творчества.',
+			3 : 'Матти́ас Ябс — немецкий рок-музыкант, гитарист группы Scorpions.Один из самых техничных гитаристов в хард-роке. Британским журналом Classic Rock включен в список величайших гитаристов всех времен.',
+			4 : 'Па́вел Мончиво́да-Ястше́мбский — польский бас-гитарист; c 10 января 2004 является участником группы Scorpions.В 2013 году был признан лучшим бас-гитаристом Польской Народной Республики.',
+			5 : 'Микки Ди — барабанщик и автор песен хэви-метал-группы Motörhead. Подданный Швеции греческого происхождения. Микки присоединился к Scorpions заменив Джеймса Коттака, который не может выступать в связи с проблемами со здоровьем.',
+			6 : 'Ульрих Рот — немецкий хард-рок и хэви-метал гитарист, бывший участник группы Scorpions и основатель групп Dawn Road, Electric Sun.По версии журнала Classic Rock входит в список величайших гитаристов всех времен.',
+			7 : 'Герман Раребелл — немецкий барабанщик, автор песен. В период с 1977 по 1995 годы выступал в немецкой рок-группе Scorpions.',
+			8 : 'Михаэль — немецкий хард-рок и хэви-метал гитарист, бывший участник групп Scorpions и UFO и основатель группы Michael Schenker Group. Младший брат гитариста Scorpions, Рудольфа Шенкера.',
+			9 : 'Джеймс Коттак — американский музыкант, известный как ударник групп Scorpions и Kingdom Come, а также как гитарист и вокалист группы Kottak. В сентябре 2016 покинул «Scorpions» из-за проблем со здоровьем.',
+			10 : 'Ральф Рикерманн — немецкий музыкант, актёр, продюсер, композитор, художник. Экс-басист легендарной немецкой хард-рок группы Scorpions (1991—2000, 2001—2003).',
+			11 : 'Фрэнсис Буххольц — бывший басист группы Scorpions. Причины ухода не ясны: по одной версии, ушёл он по причинам «личного характера». Сами Scorpions прозрачно намекают, что виной всему финансовые неурядицы.',
+		};
+		function g (id) {
+			return document.getElementById(id);
+		}
+		function moveInfo (e) {
+			var infoS = g('infoDiv').style;
+			w = 120;
+			if (document.all) { 
+				x = event.x + document.body.scrollLeft; 
+				y = event.y + document.body.scrollTop; 
+			} else { 
+				x = e.pageX;
+				y = e.pageY;
+			}
+			if ((x + w + 10) < document.body.clientWidth) { 
+				infoS.left = x + 'px';
+			} else { 
+				infoS.left = x - w + 'px';
+			}
+			infoS.top = y + 20 + 'px';
+		}
+		function showInfo (id) {
+			g('infoDiv').innerHTML = membersInfo[id.substr(4)];
+			g('infoDiv').style.display = 'block';
+		}
+		function hideInfo (id) {
+			g('infoDiv').style.display = 'none';
+		}
+		
+		window.onload = function () {
+			document.onmousemove = moveInfo;
+			var images = document.querySelectorAll('#members-images > img');
+			for (var i = 0; i < images.length; i++) {
+				images[i].onclick = function () {
+					showInfo(this.id);
+				};
+				images[i].onmouseover = function () {
+					showInfo(this.id);
+				};
+				images[i].onmouseout = function () {
+					hideInfo(this.id);
+				};
+			}
+		}
+	</script>
+
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="three columns nav">
+			<a href="main.html">Главная</a>
+		</div>
+		
+		<div class="two columns nav">
+            <a href="about.html">О группе</a>
+        </div>
+        <div class="two columns nav">
+            <a href="members.html">Члены группы</a>
+        </div>
+        <div class="two columns nav">
+            <a href="quotes.html">Цитаты</a>
+        </div>
+    </div>
+	<h1>
+		Члены группы
+	</h1>
+	<div id="members-images">
+		<img id="disk1" src="./images/rudolf_schenker.jpg" alt="Rudolf Schenker">
+		<img id="disk2" src="./images/klaus_meine.jpg" alt="Klaus Meine">
+		<img id="disk3" src="./images/matthias_jabs.jpg" alt="Matthias Jabs">
+		<img id="disk4" src="./images/pawel_maciwoda.jpg" alt="Pawel Maciwoda">
+		<img id="disk5" src="./images/mikkey_dee.jpg" alt="Mikkey Dee">
+		<img id="disk6" src="./images/ulrich_roth.jpg" alt="Ulrich Roth">
+		<img id="disk7" src="./images/herman_rarebell.jpg" alt="Herman Rarebell">
+		<img id="disk8" src="./images/michael_schenker.jpg" alt="Michael Schenker">
+		<img id="disk9" src="./images/james_kottak.jpg" alt="James Kottak">
+		<img id="disk10" src="./images/ralph_rieckermann.jpg" alt="Ralph Rieckermann">
+		<img id="disk11" src="./images/francis_buchholz.jpg" alt="Francis Buchholz">
+	</div>
+</div>
+<div id="infoDiv">
+	
+</div>
+</body>
+</html>
